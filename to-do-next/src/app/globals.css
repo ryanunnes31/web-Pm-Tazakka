@@ -1,0 +1,93 @@
+
+
+@import "tailwindcss";
+
+/* ====== Variabel warna (diambil dari logo Tazakka) ====== */
+:root {
+  --hijau-tua: #064e2b;
+  --hijau: #0f7a3d;
+  --emas: #f5b72e;
+  --jingga: #e8832a;
+  --putih-hijau: #f3f8f2;
+  --teks: #14231a;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Plus Jakarta Sans", system-ui, sans-serif;
+  color: var(--teks);
+  background: var(--putih-hijau);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Font judul (serif elegan) */
+.font-judul {
+  font-family: "Fraunces", Georgia, serif;
+  letter-spacing: -0.01em;
+}
+
+/* ====== Pola bintang 8 sudut (terinspirasi ornamen logo) ====== */
+.pola-bintang {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='%23f5b72e' stroke-opacity='0.22' stroke-width='1.2'%3E%3Cpath d='M40 6l8.5 15.5L64 14l-7.5 16L72 38.5 56.5 47 64 66 48 58.5 40 74l-8-15.5L16 66l7.5-19L8 38.5 23.5 30 16 14l15.5 7.5z'/%3E%3C/g%3E%3C/svg%3E");
+  background-size: 80px 80px;
+}
+
+/* Bintang di balik logo berputar pelan */
+@keyframes putar-pelan {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.bintang-putar {
+  animation: putar-pelan 70s linear infinite;
+}
+
+/* Animasi masuk halus untuk hero */
+@keyframes naik-halus {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-masuk {
+  animation: naik-halus 0.8s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.hero-masuk-2 {
+  animation-delay: 0.12s;
+}
+.hero-masuk-3 {
+  animation-delay: 0.24s;
+}
+
+/* Garis emas pemisah */
+.garis-emas {
+  height: 3px;
+  width: 64px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--emas), var(--jingga));
+}
+
+/* Fokus keyboard yang jelas */
+:focus-visible {
+  outline: 3px solid var(--emas);
+  outline-offset: 3px;
+  border-radius: 6px;
+}
+
+/* Hormati pengguna yang mengurangi animasi */
+@media (prefers-reduced-motion: reduce) {
+  .bintang-putar,
+  .hero-masuk {
+    animation: none !important;
+  }
+  html {
+    scroll-behavior: auto;
+  }
+}
